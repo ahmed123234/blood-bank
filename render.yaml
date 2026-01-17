@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: blood-bank-app
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn bloodbankmanagement.wsgi:application" # Replace 'myproject' with your folder name
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7 # Match your local version
+      - key: DJANGO_SETTINGS_MODULE
+        value: bloodbankmanagement.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
